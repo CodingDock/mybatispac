@@ -50,7 +50,6 @@
             <groupId>ognl</groupId>
             <artifactId>ognl</artifactId>
             <version>3.1.9</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
