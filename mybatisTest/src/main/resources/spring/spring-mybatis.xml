@@ -9,10 +9,6 @@
 	   ">
 
 
-
-
-
-
 	<!--**********************mysql  druid数据源相关配置*************************-->
 
 
@@ -52,9 +48,6 @@
 	</bean>
 
 
-
-
-
 	<!-- ==========针对myBatis的配置项================= -->
 	
 	<!-- 配置sqlSessionFactory -->
@@ -63,7 +56,7 @@
 		<property name="dataSource" ref="masterDataSource" />
 		<property name="mapperLocations" value="classpath*:/mappers/*Mapper.xml" />
 		<property name="typeAliasesPackage" value="
-			com.mb2.bean" />
+			com.test.user.bean" />
 	</bean>
 	<bean id="masterSqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="masterSqlSessionFactory" />

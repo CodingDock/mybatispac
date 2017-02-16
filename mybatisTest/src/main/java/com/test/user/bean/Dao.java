@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import test.InitContext;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,21 +15,27 @@ import java.util.Map;
 @Component
 public class Dao {
 
-//    @Autowired
-//    SqlSessionTemplate sfb;
+    @Autowired
+    private SqlSessionTemplate masterSqlSessionTemplate;
 
     public void hello(){
         System.out.println("hello");
     }
 
     public  int addUser(String userName,String passWord){
-//        SqlSessionTemplate sfb=InitContext.ctx.getBean("masterSqlSessionTemplate",SqlSessionTemplate.class);
         Map u=new HashMap();
         u.put("userName",userName);
         u.put("passWord",passWord);
         u.put("gander",1);
-//        return sfb.insert("user.userMapper.addUser",u);
-        return 1;
+        return masterSqlSessionTemplate.insert("com.mb2.dao.UserMapper.addUser",u);
+    }
+    
+    public User getUserByName(String userName){
+        return masterSqlSessionTemplate.selectOne("com.mb2.dao.UserMapper.getUserByName",userName);
     }
 
+    public int updateUserCreateTime(int userId){
+        return masterSqlSessionTemplate.update("com.mb2.dao.UserMapper.updateUserCreateTime",userId);
+    }
+    
 }
